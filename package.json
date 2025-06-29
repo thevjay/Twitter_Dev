@@ -1,0 +1,28 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "- User should be able to create a post\r     - [The post/tweet cannot be more than 250 chars]\r     - [Every post/tweet will be having support for image upload]",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thevjay/Twitter_Dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thevjay/Twitter_Dev/issues"
+  },
+  "homepage": "https://github.com/thevjay/Twitter_Dev#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.1",
+    "nodemon": "^3.1.10"
+  }
+}
