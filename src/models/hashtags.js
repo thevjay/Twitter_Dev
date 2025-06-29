@@ -13,6 +13,6 @@ const hashtagSchema = new mongoose.Schema({
     ]
 },{timestamps: true})
 
-const HasTag = mongoose.model("HasTag",hashtagSchema)
+const HasTag = mongoose.model("HashTag",hashtagSchema)
 
 module.exports = HasTag;
