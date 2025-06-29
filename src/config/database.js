@@ -1,8 +1,16 @@
-const mongoose = require('mongoose');
-require('dotenv').config()
+// src/config/database.js
+import mongoose from 'mongoose';
 
 const connect = async () => {
-    await mongoose.connect(process.env.MONGO_URL)
-}
+  try {
+    await mongoose.connect('mongodb://localhost:27017/twitter-clone', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.error("MongoDB connection failed:", error);
+  }
+};
 
-module.exports = connect;
+export default connect;

@@ -1,15 +1,16 @@
-const express = require('express')
-const connect = require('./config/database');
+import express from 'express'
+import connect from './config/database.js';
 const app = express();
 
 // const Tweet = require('./models/tweet');
 //const HashtagRepository = require('./repository/hashtag-repository');
-const TweetService = require('./services/tweet-service');
+// import TweetService from './services/tweet-service.js'
+
+import TweetService from './services/tweet-service.js';
 
 app.listen(3000,async()=>{
     console.log('server started');
     await connect();
-    console.log('Mongo db connected')
     // const tweets = await Tweet.find({
     //     content:["First tweet","my tweet","12m34"]
     // })
@@ -42,4 +43,7 @@ app.listen(3000,async()=>{
     // let service = new TweetService();
     // const tweet = await service.create({ content: "is #tweets woorking ?"})
     // console.log(tweet)
+
+    const service = new TweetService();
+    await service.create({ content: 'Done with #refactor ?' });
 })

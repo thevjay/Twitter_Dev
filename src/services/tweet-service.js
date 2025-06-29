@@ -1,4 +1,4 @@
-const { TweetRepository , HashtagRepository} = require('../repository/index')
+import { TweetRepository , HashtagRepository} from '../repository/index.js'
 
 class TweetService {
     constructor() {
@@ -8,10 +8,13 @@ class TweetService {
 
     async create(data) {
         const content = data.content;
-        let tags = content.match(/#[a-zA-Z0-9_]+/g).map((tag)=> tag.substring(1));
+        console.log('Creating tweet with content:', data.content);
+        let tags = content.match(/#[a-zA-Z0-9_]+/g)?.map((tag) => tag.substring(1)) || [];
         
 
-        const tweet = await this.tweetRepository.create(data);
+const tweet = await this.tweetRepository.create(data);
+console.log('Tweet created:', tweet);
+
         let alreadyPresentTags = await this.hashtagRepository.findByName(tags)
         //console.log(alreadyPresentTags)
         let titleOfPresentTags = alreadyPresentTags.map(tags => tags.title)
@@ -21,11 +24,11 @@ class TweetService {
             return {title: tag,tweets: [tweet.id]}
         })
         //console.log(newTags)
-        const response = await this.hashtagRepository.bulkCreate(newTags);
-        
+        await this.hashtagRepository.bulkCreate(newTags);
         alreadyPresentTags.forEach((tag)=>{
-    
-            tag.tweets.push(tag);
+            console.log("Tag",tag)
+            console.log("Tweet._id",tweet._id)
+            tag.tweets.push(tweet._id);
             tag.save();
         })
         // [excited,coding,js,carrer]  -> [{title: excited},{title: career}]
@@ -40,7 +43,7 @@ class TweetService {
     }
 }
 
-module.exports = TweetService;
+export default TweetService;
 
 /**
  *  This is my #first  #tweet . I am realy #excited

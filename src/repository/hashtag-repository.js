@@ -1,4 +1,4 @@
-const Hashtag = require('../models/hashtags');
+import Hashtag from '../models/hashtags.js'
 
 class HashtagRepository {
     
@@ -41,7 +41,7 @@ class HashtagRepository {
         try{
             const tags = await Hashtag.find({
                 title: titleList
-            }).select('title -_id');
+            })
             return tags;
         } catch (error){
             console.log(error);
@@ -49,4 +49,4 @@ class HashtagRepository {
     }
 }
 
-module.exports = HashtagRepository
+export default HashtagRepository;

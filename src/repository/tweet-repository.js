@@ -1,4 +1,4 @@
-const Tweet = require('../models/tweet')
+import Tweet from '../models/tweet.js'
 
 class TweetRepository {
 
@@ -7,7 +7,8 @@ class TweetRepository {
             const tweet = await Tweet.create(data);
             return tweet;
         } catch(error){
-            console.log(error);
+          console.error("Error creating tweet:", error);
+            throw error;
         }
     }
 
@@ -51,4 +52,4 @@ class TweetRepository {
 }
 
 
-module.exports = TweetRepository
+export default TweetRepository;
