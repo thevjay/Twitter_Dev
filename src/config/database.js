@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 const connect = async () => {
-    await mongoose.connect('mongodb+srv://vijay930:67THTyxdPvrOfwIB@cluster0.qyuho.mongodb.net/twitter_Dev')
+    await mongoose.connect(process.env.MONGO_URL)
 }
 
 module.exports = connect;

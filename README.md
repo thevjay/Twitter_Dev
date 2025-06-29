@@ -23,3 +23,16 @@
 - Everytweet might be having a hashtag
 
 # use server side rendering vs server-driven ui  and config-driven UI
+
+# extract hashtags from complex string using regex:
+- https://stackoverflow.com/questions/43398984/extract-hashtags-from-complex-string-using-regex
+
+# regex to get all hashtags from a string
+
+```
+    let str = "This is my #first #tweet , really #excited"
+
+    str.match(/#[a-z0-9_]+/g);
+
+   [ ` #first` , `#tweet` , `#excited`]
+```
