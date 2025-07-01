@@ -7,40 +7,41 @@ class TweetService {
     }
 
     async create(data) {
+    try {
+        //console.log("Service: Creating tweet with content:", data.content);
         const content = data.content;
-        console.log('Creating tweet with content:', data.content);
-        let tags = content.match(/#[a-zA-Z0-9_]+/g)?.map((tag) => tag.substring(1)) || [];
-        
 
-const tweet = await this.tweetRepository.create(data);
-console.log('Tweet created:', tweet);
+        let tags = content.match(/#[a-zA-Z0-9_]+/g)?.map((tag) => tag.substring(1).toLowerCase()) || [];
 
-        let alreadyPresentTags = await this.hashtagRepository.findByName(tags)
-        //console.log(alreadyPresentTags)
-        let titleOfPresentTags = alreadyPresentTags.map(tags => tags.title)
-    
-        let newTags = tags.filter((tag)=> !titleOfPresentTags.includes(tag));
-        newTags = newTags.map((tag)=>{
-            return {title: tag,tweets: [tweet.id]}
-        })
-        //console.log(newTags)
-        await this.hashtagRepository.bulkCreate(newTags);
-        alreadyPresentTags.forEach((tag)=>{
-            console.log("Tag",tag)
-            console.log("Tweet._id",tweet._id)
+        //console.log("Extracted hashtags:", tags);
+
+        const tweet = await this.tweetRepository.create(data);
+        //console.log("Tweet created:", tweet);
+
+        let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
+        let titleOfPresentTags = alreadyPresentTags.map(t => t.title);
+
+        let newTags = tags
+            .filter((tag) => !titleOfPresentTags.includes(tag))
+            .map((tag) => ({ title: tag, tweets: [tweet.id] }));
+
+        if (newTags.length > 0) {
+            await this.hashtagRepository.bulkCreate(newTags);
+        }
+
+        alreadyPresentTags.forEach((tag) => {
             tag.tweets.push(tweet._id);
             tag.save();
-        })
-        // [excited,coding,js,carrer]  -> [{title: excited},{title: career}]
-        // todo create hastags and add here
-        /**
-         * 1. bulcreate in mongoose
-         * 2. filter title of hashtag based on multiple tags
-         * 3. How to add tweet id inside all the hashtags
-         * 
-         */
+        });
+
         return tweet;
+
+    } catch (error) {
+        console.log("Error in service layer:", error);
+        throw error; // ensure error is thrown so controller can catch
     }
+}
+
 }
 
 export default TweetService;

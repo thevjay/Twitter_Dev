@@ -7,7 +7,7 @@ class TweetRepository {
             const tweet = await Tweet.create(data);
             return tweet;
         } catch(error){
-          console.error("Error creating tweet:", error);
+          console.error("Error in repository:", error);
             throw error;
         }
     }
