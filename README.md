@@ -38,3 +38,25 @@
 ```
 
 # mongoose Hooks:
+
+
+1 - Comments and Likes
+2 - Passport user auth
+3 - Misc & S3 image upload
+4 - Testing
+5 - Web sockets - Chat app 1
+6 - Chat app 2
+7 - Docker | Deployment | CICD
+8 - GRPC -> 2 services | client , server | protobuf
+9 - Redis caching
+10 - Extra
+
+
+
+
+
+
+
+------------------------------------------------------------------
+- System design interview
+- Iterator generator

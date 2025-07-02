@@ -17,16 +17,17 @@ app.listen(3000,async()=>{
     await connect();
     console.log("Mongo db connected");
 
-    const userRepo = new UserRepository();
-    const tweetRepo = new TweetRepository();
-    const tweets = await tweetRepo.getAll(0,10);
+    // const userRepo = new UserRepository();
+    // const tweetRepo = new TweetRepository();
+    // const tweets = await tweetRepo.getAll(0,10);
+    // const users = await userRepo.getAll();
+    // const user = await userRepo.create({
+    //     email:'vijay@admin.com',
+    //     password:'123456',
+    //     name:'Vijay'
+    // });
 
-    const user = await userRepo.create({
-        email:'vjhbubwqwh@admin.com',
-        password:'123456',
-        name:'Vijayhgh'
-    });
+    // const likeService = new LikeService();
+    // await likeService.toggleLike(tweets[0].id, 'Tweet',users[0].id);
 
-    const likeService = new LikeService();
-    await likeService.toggleLike(tweets[0].id, 'Tweet',user.id);
 })

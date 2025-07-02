@@ -8,7 +8,7 @@ class LikeService {
 
     async toggleLike(modelId,modelType,userId){    // /api/v1/likes/toggle?id=modelid&type=Tweet
         if(modelType === 'Tweet'){
-            var likeable = await this.TweetRepository.get(modelId);
+            var likeable = await this.TweetRepository.find(modelId);
         } else if(modelType === 'Comment') {
             // TODO
         } else {
@@ -20,11 +20,14 @@ class LikeService {
             onModel: modelType,
             likeable: modelId
         });
-
+        console.log("FROM EXISTS",exists)
+        console.log("FROM LIKEABLE",likeable)
         if(exists){
-            likeable.likes.pull(exists.id);
+            likeable.likes.pull(exists._id);
             await likeable.save();
-            await exists.remove();
+            await this.likeRepository.delete(exists._id); // 💥 FIXED HER
+            // E
+            //await exists.remove();
             var isAdded = true;
 
         } else {
@@ -33,7 +36,7 @@ class LikeService {
                 onModel: modelType,
                 likeable: modelId
             });
-            likeable.likes.push(newLike);
+            likeable.likes.push(newLike._id);
             await likeable.save();
             var isAdded = false;
         }

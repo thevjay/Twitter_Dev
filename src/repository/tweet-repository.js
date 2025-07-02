@@ -38,6 +38,7 @@ class TweetRepository extends CrudRepository {
     async find(id) {
         try{
             const tweet = await Tweet.findById(id).exec()
+            console.log("FROM TWEET",tweet)
             return tweet;
         } catch(error){
             console.log(error);

@@ -9,9 +9,18 @@ class LikeRepository extends CrudRepository {
     async findByUserAndLikeable(data) {
         try{
             const like = await Like.findOne(data);
-            return like
+            return like;
         } catch(error){
             throw new error;
+        }
+    }
+
+    async delete(id) {
+        try {
+            return await Like.findByIdAndDelete(id);
+        } catch (error) {
+            console.error("Error deleting Like:", error);
+            throw error;
         }
     }
 }
