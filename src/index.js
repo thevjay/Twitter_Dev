@@ -31,3 +31,8 @@ app.listen(3000,async()=>{
     // await likeService.toggleLike(tweets[0].id, 'Tweet',users[0].id);
 
 })
+
+/***
+ * gpay -> psp (icici) -> NPCI -> BOB  -> NPCI -> BOA -> NPCI -> PSP (yes bank) -> Phonepe
+ * 
+ */

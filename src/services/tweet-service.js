@@ -40,8 +40,13 @@ class TweetService {
         console.log("Error in service layer:", error);
         throw error; // ensure error is thrown so controller can catch
     }
-}
 
+    }
+
+    async get(tweetId){
+        const tweet = await this.tweetRepository.getWithComments(tweetId);
+        return tweet;
+    }
 }
 
 export default TweetService;
