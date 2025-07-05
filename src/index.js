@@ -39,3 +39,13 @@ app.listen(3000,async()=>{
  * gpay -> psp (icici) -> NPCI -> BOB  -> NPCI -> BOA -> NPCI -> PSP (yes bank) -> Phonepe
  * 
  */
+
+/**
+ * user -> unique_id
+ * 
+ * https://www.mywebsite.com/verifyEmail/skhve8w874rte41
+ * 
+ * verifyEmail/:unique_id
+ * 
+ * db -> userid -> unique_id -> createdAt -> isVerified
+ */

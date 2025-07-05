@@ -57,6 +57,23 @@
 
 
 
-------------------------------------------------------------------
+# ------------------------------------------------------------------
 - System design interview
 - Iterator generator
+
+
+
+# --------------------------------------------------------------
+### AWS S3:
+# Amazon S3: - Cloud Object Storage static content Simple storage Service
+- static - it means fixed data
+
+### aws-sdk npm 
+- is npm packesga connect to directly aws
+- install 
+- npm i aws-sdk
+
+### multer  - uploading files. 
+- npm i multer 
+### multer-s3 
+- npm i multer-s3
