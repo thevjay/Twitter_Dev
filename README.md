@@ -77,3 +77,8 @@
 - npm i multer 
 ### multer-s3 
 - npm i multer-s3
+- error in above the version
+- we need to install in 2x 
+- npm i multer-s3@2.10.0
+
+## upload.array in multer

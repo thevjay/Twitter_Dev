@@ -10,12 +10,16 @@ class TweetService {
     try {
         //console.log("Service: Creating tweet with content:", data.content);
         const content = data.content;
+        const image = data.image;
 
         let tags = content.match(/#[a-zA-Z0-9_]+/g)?.map((tag) => tag.substring(1).toLowerCase()) || [];
 
         //console.log("Extracted hashtags:", tags);
 
-        const tweet = await this.tweetRepository.create(data);
+        const tweet = await this.tweetRepository.create({
+            content,
+            image
+        });
         //console.log("Tweet created:", tweet);
 
         let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
