@@ -81,4 +81,30 @@
 - we need to install in 2x 
 - npm i multer-s3@2.10.0
 
-## upload.array in multer
+### upload.array in multer
+
+
+
+### TDD development:
+- this is input this output of my features
+
+### Jest:
+- npm install jest 
+- npm install --save-dev @babel/plugin-transform-modules-commonjs
+
+
+### Unit   testing
+- testing one branch of function like it check small of uint function any
+
+### 
+
+### mockFn.mockImplementation(fn);
+- Accepts a function that should be used as the implementation of the mock. The mock itself 
+
+### Spy on:
+- 
+ 
+
+
+
+- npm jest --coverage

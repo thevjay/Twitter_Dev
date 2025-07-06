@@ -1,7 +1,7 @@
 import TweetService from "../services/tweet-service.js";
 
 import upload from "../config/file-upload-s3-config.js";
-const singleUploader = upload.single('image');
+const singleUploader = upload.array('image');
 
 const tweetService = new TweetService();
 
@@ -13,7 +13,7 @@ export const createTweet = async (req,res)=>{
                     error: err
                 })
             }
-            const payload = req.body;
+            const payload = {...req.body};
     if (req.file && req.file.location) {
         payload.image = req.file.location; // ✅ Attach image URL from S3
     }
